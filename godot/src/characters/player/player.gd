@@ -1,16 +1,31 @@
 extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var speed = 3000000.0
+
+var velocity = Vector2()
+
+onready var animation = get_node("Animation")
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	animation.play("idle")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(_delta):
+	
+	# Movement
+	velocity.x = 0
+	
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= speed
+		if animation.current_animation == "idle":
+			animation.play("walk")
+	elif Input.is_action_pressed("move_right"):
+		velocity.x += speed
+		if animation.current_animation == "idle":
+			animation.play("walk")
+	elif animation.current_animation == "walk":
+		animation.play("idle")
+	
+	velocity = move_and_slide(velocity, Vector2.UP)

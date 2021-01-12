@@ -51,4 +51,4 @@ jump={
 
 [rendering]
 
-environment/default_environment="res://src/level/tileset.tres"
+environment/default_environment="res://default_env.tres"

@@ -8,8 +8,9 @@ export var jump_force = 300.0
 
 var velocity = Vector2()
 
-onready var animation = get_node("Animation")
 onready var sprite = get_node("Sprite")
+onready var animation = get_node("Animation")
+onready var camera = get_node("Camera")
 
 
 func _ready():

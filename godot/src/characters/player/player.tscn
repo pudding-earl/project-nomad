@@ -3,9 +3,6 @@
 [ext_resource path="res://src/characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/characters/hero/walk.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.5, 8 )
-
 [sub_resource type="Animation" id=2]
 length = 0.5
 loop = true
@@ -38,6 +35,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 2 ]
 }
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.5, 8 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -45,13 +45,15 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 0.988 )
-shape = SubResource( 1 )
-
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 0.988 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera2D" parent="."]
 current = true
+limit_left = 20
+limit_bottom = 240

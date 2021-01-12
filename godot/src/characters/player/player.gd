@@ -37,8 +37,17 @@ func _physics_process(_delta):
 	elif animation.current_animation == "walk":
 		animation.play("idle")
 	
+	# Jumping/Air
+	print(velocity.y)
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			velocity.y -= jump_force
+			animation.play("jump")
+		elif animation.current_animation == "fall":
+			animation.play("idle")
+	else:
+		if velocity.y > 30:
+			animation.play("fall")
+
 	velocity.y += GRAVITY
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y -= jump_force
-	
 	velocity = move_and_slide(velocity, Vector2.UP)

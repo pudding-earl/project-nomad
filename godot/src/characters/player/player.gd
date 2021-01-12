@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
 
-export var speed = 3000000.0
+const GRAVITY = 9.8
+
+export var speed = 30.0
 
 var velocity = Vector2()
 
@@ -15,7 +17,7 @@ func _ready():
 func _physics_process(_delta):
 	
 	# Movement
-	velocity.x = 0
+	velocity.x = 0.0
 	
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= speed
@@ -28,4 +30,6 @@ func _physics_process(_delta):
 	elif animation.current_animation == "walk":
 		animation.play("idle")
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity.y -= GRAVITY
+	
+	move_and_slide(velocity, Vector2.UP)

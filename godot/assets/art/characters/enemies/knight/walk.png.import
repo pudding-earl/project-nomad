@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle.png-e1cf5e9afedb7d03e84e0f9b578cc72c.stex"
+path="res://.import/walk.png-cf672a815aff83a9dc5858c3128c59a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/enemies/knight/idle.png"
-dest_files=[ "res://.import/idle.png-e1cf5e9afedb7d03e84e0f9b578cc72c.stex" ]
+source_file="res://assets/art/characters/enemies/knight/walk.png"
+dest_files=[ "res://.import/walk.png-cf672a815aff83a9dc5858c3128c59a2.stex" ]
 
 [params]
 

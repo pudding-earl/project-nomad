@@ -38,7 +38,6 @@ func _physics_process(_delta):
 		animation.play("idle")
 	
 	# Jumping/Air
-	print(velocity.y)
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y -= jump_force

@@ -39,4 +39,3 @@ texture = SubResource( 2 )
 
 [node name="Knight" parent="." instance=ExtResource( 3 )]
 position = Vector2( 395.74, 22.3973 )
-speed = 50.0

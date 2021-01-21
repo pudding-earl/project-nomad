@@ -11,6 +11,7 @@ var awake = false # Whether the enemy is idle or targetting the player
 
 var velocity = Vector2()
 var target
+var timer
 
 onready var sprite = get_node("Sprite")
 onready var animation = get_node("Animation")
@@ -18,7 +19,6 @@ onready var animation = get_node("Animation")
 
 func _ready():
 	animation.play("idle")
-
 
 func _physics_process(_delta):
 	velocity.x = 0
@@ -44,5 +44,17 @@ func wake(body):
 		return
 	if wake_time > 0.0:
 		animation.play("wake")
+		yield(get_tree().create_timer(wake_time), "timeout")
+		awake = true
 	target = body
-	awake = true
+
+
+func sleep(body):
+	if !awake or target != body:
+		return
+	if wake_time > 0.0:
+		awake = false
+		animation.play_backwards("wake")
+		yield(get_tree().create_timer(wake_time), "timeout")
+		animation.play("idle")
+	target = null
